@@ -33,3 +33,17 @@ class: middle, center
 - Updating information requires writing to the file
 
 - Many applications may want to access the data at one time
+
+---
+
+# Relational Databases
+
+- Use tables of columns and rows to represent data
+	- Relate tables together using keys
+	- Most use SQL (Standard Query Language)
+	- Not very hip
+	- Examples: Oracle, MySQL, SQLite
+
+![relational-example](./images/relational-example.png)
+
+---
