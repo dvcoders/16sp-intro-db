@@ -1,3 +1,3 @@
 # intro-db
 
-[slides](/slides/intro-db.html)
+[slides](https://dvcoders.com/intro-db/)
