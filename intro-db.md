@@ -33,6 +33,7 @@ class: middle, center
 - Many applications may want to access the data at one time
 
 ---
+
 # Introduction
 
 - Understanding databases is a big plus when finding internships - many ask for some knowledge of SQL
@@ -87,6 +88,7 @@ class: middle, center
 
 1. Sign up at [heroku.com](https://www.heroku.com)
 2. Grab the heroku toolbelt at [toolbelt.heroku.com](https://toolbelt.heroku.com)
+    - If on Mac, `brew install heroku-toolbelt`
 
 ```bash
 $ heroku login
@@ -103,22 +105,26 @@ Initialized empty Git repository in ./intro-db/.git/
 $ heroku create
 Creating app... done, stack is cedar-14
 https://***.herokuapp.com/ | https://git.heroku.com/***.git
-
-$ heroku addons:create heroku-postgresql:hobby-dev
-Creating postgresql-trapezoidal-55564... done, (free)
-Adding postgresql-trapezoidal-55564 to ***... done
-Setting DATABASE_URL and restarting ***... done, v3
-Database has been created and is available
- ! This database is empty. If upgrading, you can transfer
- ! data from another database with pg:copy
-Use `heroku addons:docs heroku-postgresql` to view documentation.
 ```
 
 ---
 
-# Workshop
+# Workshop setup
 
-1. Connect to the database
+1. Create the database
+    
+    ```bash
+    $ heroku addons:create heroku-postgresql:hobby-dev
+    Creating postgresql-trapezoidal-55564... done, (free)
+    Adding postgresql-trapezoidal-55564 to ***... done
+    Setting DATABASE_URL and restarting ***... done, v3
+    Database has been created and is available
+     ! This database is empty. If upgrading, you can transfer
+     ! data from another database with pg:copy
+    Use `heroku addons:docs heroku-postgresql` to view documentation.
+    ```
+
+2. Connect to the database
 
     ```bash
     $ heroku run 'psql $DATABASE_URL'
