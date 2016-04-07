@@ -6,9 +6,11 @@ class: middle, center
 
 # Agenda
 
-1. -
-2. -
-3. -
+1. Introduction with example
+2. Types of databases
+    - Relational and non relational
+    - SQL
+3. Workshop
 
 ---
 
@@ -49,11 +51,11 @@ class: middle, center
 
 - Use tables of columns and rows to represent data
 	- Relate tables together using keys
-	- Most use SQL (Standard Query Language)
+	- Most use SQL (Structured Query Language)
 	- Not very hip
 	- Examples: Oracle, MySQL, SQLite
 
-![relational-example](./images/relational-example.png)
+![relational-example](./images/relational-example.png) ![table-example](./images/table-example.png)
 
 ---
 
@@ -78,3 +80,52 @@ class: middle, center
 	- Examples: MongoDB, RethinkDB
 
 ![document-store-example](./images/document-store-example.png)
+
+---
+
+# Workshop Setup
+
+1. Sign up at [heroku.com](https://www.heroku.com)
+2. Grab the heroku toolbelt at [toolbelt.heroku.com](https://toolbelt.heroku.com)
+
+```bash
+$ heroku login
+Enter your Heroku credentials.
+Email: jesse@example.com
+Password (typing will be hidden):
+Authentication successful.
+
+$ mkdir intro-db
+$ cd intro-db
+$ git init
+Initialized empty Git repository in ./intro-db/.git/
+
+$ heroku create
+Creating app... done, stack is cedar-14
+https://***.herokuapp.com/ | https://git.heroku.com/***.git
+
+$ heroku addons:create heroku-postgresql:hobby-dev
+Creating postgresql-trapezoidal-55564... done, (free)
+Adding postgresql-trapezoidal-55564 to ***... done
+Setting DATABASE_URL and restarting ***... done, v3
+Database has been created and is available
+ ! This database is empty. If upgrading, you can transfer
+ ! data from another database with pg:copy
+Use `heroku addons:docs heroku-postgresql` to view documentation.
+```
+
+---
+
+# Workshop
+
+1. Connect to the database
+
+    ```bash
+    $ heroku run 'psql $DATABASE_URL'
+    Running psql $DATABASE_URL on ***.... up, run.1083
+    psql (9.5.1, server 9.4.7)
+    SSL connection (protocol: TLSv1.2, cipher: ..., bits: 256, compression: off)
+    Type "help" for help.
+
+    d2bh5qbs8qns39=> 
+    ```
