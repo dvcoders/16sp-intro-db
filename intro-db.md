@@ -230,3 +230,22 @@ Sample queries
  3224919
 (1 row)
 ```
+
+---
+
+# Workshop
+
+More sample queries
+
+```sql
+=> SELECT DISTINCT name FROM names ORDER BY name ASC LIMIT 5;
+  name
+---------
+ Aaban
+ Aadan
+ Aadarsh
+ Aaden
+ Aadhav
+(5 rows)
+```
+
