@@ -1,7 +1,7 @@
 class: middle, center
 
 # intro-db
-![db-image](./images/sqlite.gif)
+![db-image](./images/postgresql-logo.png)
 ---
 
 # Agenda
@@ -81,40 +81,6 @@ class: middle, center
 	- Examples: MongoDB, RethinkDB
 
 ![document-store-example](./images/document-store-example.png)
-
----
-
-# Database design
-
-Think about what data actually needs to be stored. Store it in a way that minimizes data redundancy. Think about what data types you will need and how many objects you have. Each object usually gets its own table.
-
-**Primary keys**
-
-Each table has a Primary Key (PK) column that can be used to uniquely identify a specific row. Also called IDs. They should be created whenever a new row is made and never changed. These are used when referring to data from other tables. Can be as simple as an auto-incrementing number.
-    
----
-
-# Database design - Relationships
-
-- One-to-many. Example: a teacher has many classes, but a class only has one teacher. Can't create a column of type array, so need to create a new table.
-
-    ![one-to-many](./images/one-to-many.png)
-
----
-
-# Database design - Relationships
-
-- Many-to-many: a customer's order may contain one or more products; and a product can appear in many orders
-    
-    ![many-to-many](./images/many-to-many.png)
-    
----
-
-# Database design - Relationships
-
-- One-to-one: Product may contain optional data. We only create a row in `productDetails` if the optional data is chosen.
-    
-    ![one-to-one](./images/one-to-one.png)
 
 ---
 
