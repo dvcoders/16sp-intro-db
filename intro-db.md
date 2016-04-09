@@ -81,6 +81,38 @@ class: middle, center
 	- Examples: MongoDB, RethinkDB
 
 ![document-store-example](./images/document-store-example.png)
+# Database design
+
+Think about what data actually needs to be stored. Store it in a way that minimizes data redundancy. Think about what data types you will need and how many objects you have. Each object usually gets its own table.
+
+**Primary keys**
+
+Each table has a Primary Key (PK) column that can be used to uniquely identify a specific row. Also called IDs. They should be created whenever a new row is made and never changed. These are used when referring to data from other tables. Can be as simple as an auto-incrementing number.
+    
+---
+
+# Database design - Relationships
+
+- One-to-many. Example: a teacher has many classes, but a class only has one teacher. Can't create a column of type array, so need to create a new table.
+
+    ![one-to-many](./images/one-to-many.png)
+
+---
+
+# Database design - Relationships
+
+- Many-to-many: a customer's order may contain one or more products; and a product can appear in many orders
+    
+    ![many-to-many](./images/many-to-many.png)
+    
+---
+
+# Database design - Relationships
+
+- One-to-one: Product may contain optional data. We only create a row in `productDetails` if the optional data is chosen.
+    
+    ![one-to-one](./images/one-to-one.png)
+
 
 ---
 
@@ -158,12 +190,12 @@ https://***.herokuapp.com/ | https://git.heroku.com/***.git
 
     ```sql
     => CREATE TABLE names (
-    id int,
-    name varchar(50),
-    year int,
-    gender varchar(1),
-    state varchar(20),
-    count int
+        id int,
+        name varchar(50),
+        year int,
+        gender varchar(1),
+        state varchar(20),
+        count int
     );
     ```
     
@@ -171,6 +203,7 @@ https://***.herokuapp.com/ | https://git.heroku.com/***.git
 
     ```sql
     => \copy names FROM './StateNames.csv' WITH CSV;
+    
     COPY 5647426
     ```
 
@@ -207,27 +240,27 @@ Structure of database
 Sample queries
 
 ```sql
-=> SELECT * FROM names WHERE  name='Jesse' and state='CA' and year=1996;
+=> SELECT * FROM names WHERE name='Jesse' and state='CA' and year=1996;
    id   | name  | year | gender | state | count
 --------+-------+------+--------+-------+-------
  491828 | Jesse | 1996 | F      | CA    |    28
  658580 | Jesse | 1996 | M      | CA    |  1191
 (2 rows)
 
-=> SELECT * FROM names WHERE year=1996 ORDER BY count DESC LIMIT 5;
-   id    |    name     | year | gender | state | count
----------+-------------+------+--------+-------+-------
-  658530 | Daniel      | 1996 | M      | CA    |  4706
-  658531 | Jose        | 1996 | M      | CA    |  4645
-  658532 | Michael     | 1996 | M      | CA    |  4352
-  658533 | David       | 1996 | M      | CA    |  3999
-  658534 | Christopher | 1996 | M      | CA    |  3945
+=> SELECT name, state FROM names WHERE year=1988 ORDER BY count DESC LIMIT 5;
+    name     | state
+-------------+-------
+ Michael     | CA
+ Jessica     | CA
+ Christopher | CA
+ Michael     | NY
+ Daniel      | CA
 (5 rows)
 
-=> SELECT SUM(count) FROM names where year=1996;
+=> SELECT SUM(count) FROM names where year BETWEEN 1999 AND 2001;
    sum
 ---------
- 3224919
+ 9780944
 (1 row)
 ```
 
@@ -246,6 +279,16 @@ More sample queries
  Aadarsh
  Aaden
  Aadhav
+(5 rows)
+
+=> SELECT year, SUM(count) FROM names GROUP BY year ORDER BY sum DESC LIMIT 5;
+ year |   sum
+------+---------
+ 1957 | 4002231
+ 1959 | 3955363
+ 1960 | 3948284
+ 1958 | 3933693
+ 1961 | 3929909
 (5 rows)
 ```
 
