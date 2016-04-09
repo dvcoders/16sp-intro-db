@@ -144,12 +144,12 @@ https://***.herokuapp.com/ | https://git.heroku.com/***.git
 # Workshop Setup
 
 - Create the database
-    
+
     ```bash
     $ heroku addons:create heroku-postgresql:hobby-dev
     Creating postgresql-trapezoidal-55564... done, (free)
-    Adding postgresql-trapezoidal-55564 to ***... done
-    Setting DATABASE_URL and restarting ***... done, v3
+    Adding postgresql-trapezoidal-55564 to ...... done
+    Setting DATABASE_URL and restarting ...... done, v3
     Database has been created and is available
      ! This database is empty. If upgrading, you can transfer
      ! data from another database with pg:copy
@@ -160,15 +160,15 @@ https://***.herokuapp.com/ | https://git.heroku.com/***.git
 
     ```bash
     $ heroku run bash
-    Running bash on ***.... up, run.7217
-    ~ $ wget -O StateNames.csv https://www.dropbox.com/s/s11x9cj29ct9clw/StateNames.csv?dl=1
-    ...
-    ...
-    Saving to: 'StateNames.csv'
+    Running bash on ....... up, run.7217
 
-    100%[=================================>] 154,696,176 24.9MB/s   in 5.1s
+    ~ $ wget https://github.com/dvcoders/intro-db/releases/download/1.0.0/StateNames.csv.tar.gz
+    ...
+    Saving to: 'StateNames.csv.tar.gz'
+    100%[=================================>] 31,686,560  41.7MB/s   in 0.7s
+    2016-04-07 20:37:54 (41.7 MB/s) - 'StateNames.csv.tar.gz' saved [31686560/31686560]
 
-    2016-04-07 20:37:54 (29.2 MB/s) - 'StateNames.csv' saved [154696176/154696176]
+    ~ $ tar -xf StateNames.csv.tar.gz
     ```
 
 ---
@@ -179,10 +179,8 @@ https://***.herokuapp.com/ | https://git.heroku.com/***.git
 
     ```bash
     ~ $ psql $DATABASE_URL
-    Running psql $DATABASE_URL on ***.... up, run.1083
-    psql (9.5.1, server 9.4.7)
-    SSL connection (protocol: TLSv1.2, cipher: ..., bits: 256, compression: off)
-    Type "help" for help.
+    Running psql $DATABASE_URL on ....... up, run.1083
+    ...
     d2bh5qbs8qns39=> 
     ```
 
