@@ -2,6 +2,7 @@ class: middle, center
 
 # intro-db
 ![db-image](./images/postgresql-logo.png)
+
 ---
 
 # Agenda
@@ -41,8 +42,8 @@ class: middle, center
 - "Database" may refer to the both the data and the DBMS
 - DBMSs structure data according to different models
 - DBMSs use different querying languages to access data
-	- SQL is the most popular, and is used with many DBMSs
-	- Others use their own query languages
+    - SQL is the most popular, and is used with many DBMSs
+    - Others use their own query languages
 
 ![dbms](./images/dbms.png)
 
@@ -51,10 +52,10 @@ class: middle, center
 # Relational Databases
 
 - Use tables of columns and rows to represent data
-	- Relate tables together using keys
-	- Most use SQL (Structured Query Language)
-	- Not very hip
-	- Examples: Oracle, MySQL, SQLite
+    - Relate tables together using keys
+    - Most use SQL (Structured Query Language)
+    - Not very hip
+    - Examples: Oracle, MySQL, SQLite
 
 ![relational-example](./images/relational-example.png) ![table-example](./images/table-example.png)
 
@@ -65,9 +66,9 @@ class: middle, center
 - A broad term referring to databases that do not use the relational table model
 
 - Key-Value Stores
-	- Act similarly to a hash table
-	- Records can hold different types of data
-	- Examples: Redis, Amazon DynamoDB
+    - Act similarly to a hash table
+    - Records can hold different types of data
+    - Examples: Redis, Amazon DynamoDB
 
 ![key-value-example](./images/key-value-example.png)
 
@@ -75,10 +76,10 @@ class: middle, center
 
 # NoSQL Databases
 - Document Stores 
-	- Similar to key-value stores - items may have different structures
-	- can have a nested structure, like JSON
-	- useful for holding arrays
-	- Examples: MongoDB, RethinkDB
+    - Similar to key-value stores - items may have different structures
+    - can have a nested structure, like JSON
+    - useful for holding arrays
+    - Examples: MongoDB, RethinkDB
 
 ![document-store-example](./images/document-store-example.png)
 # Database design
@@ -93,7 +94,7 @@ Each table has a Primary Key (PK) column that can be used to uniquely identify a
 
 # Database design - Relationships
 
-- One-to-many. Example: a teacher has many classes, but a class only has one teacher. Can't create a column of type array, so need to create a new table.
+- One-to-many, aka arrays. Example: a teacher has many classes, but a class only has one teacher. Can't create a column of type array, so need to create a new table.
 
     ![one-to-many](./images/one-to-many.png)
 
@@ -101,18 +102,25 @@ Each table has a Primary Key (PK) column that can be used to uniquely identify a
 
 # Database design - Relationships
 
+- Example of arrays with one-to-many
+
+    ![array-example](./images/array-example.png)
+
+---
+
+# Database design - Relationships
+
 - Many-to-many: a customer's order may contain one or more products; and a product can appear in many orders
-    
+
     ![many-to-many](./images/many-to-many.png)
-    
+
 ---
 
 # Database design - Relationships
 
 - One-to-one: Product may contain optional data. We only create a row in `productDetails` if the optional data is chosen.
-    
-    ![one-to-one](./images/one-to-one.png)
 
+    ![one-to-one](./images/one-to-one.png)
 
 ---
 
@@ -255,7 +263,7 @@ Sample queries
  Daniel      | CA
 (5 rows)
 
-=> SELECT SUM(count) FROM names where year BETWEEN 1999 AND 2001;
+=> SELECT SUM(count) FROM names WHERE year BETWEEN 1999 AND 2001;
    sum
 ---------
  9780944
@@ -289,4 +297,3 @@ More sample queries
  1961 | 3929909
 (5 rows)
 ```
-
